@@ -1,6 +1,6 @@
 ## Supplementary Materials
 
-* [Overview](#overview-1)
+* [Overview](#overview)
 * [Participant Mapping](#participant-mapping)
 * [Per-Participant Task Performance](#per-participant-task-performance)
 * [Individual SUS Scores](#individual-sus-scores)
