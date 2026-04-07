@@ -25,6 +25,7 @@
 * [References](#references)
 * [Acknowledgments](#acknowledgments)
 * [How to Cite](#how-to-cite)
+* [Supplementary Materials](SUPPLEMENTARY.md)
 
 ---
 
@@ -52,19 +53,27 @@ The evaluation was conducted in collaboration with **La Scène**, the student mu
 
 ```
 hiaudio_user_evaluation_results/
-├── README.md                          # This file — study summary and results
+├── README.md                                          # This file — study summary and results
+├── SUPPLEMENTARY.md                                   # Participant-level data tables and qualitative feedback
 ├── docs/
-│   └── Hi-Audio_Evaluation Tasks.pdf  # Task instructions given to participants
-├── images/                            # Figures and logos used in this README
-│   ├── instruments_barchart.png       # Reported instruments bar chart
-│   ├── fig_task_time_pie.png          # Task completion time distribution
-│   ├── ERC_logo.png                   # European Research Council logo
-│   └── lascene.png                    # La Scène logo
-└── surveys/                           # Individual participant questionnaire responses
-    └── <response_id>.pdf              # One PDF per participant (22 files total)
+│   ├── Hi-Audio_Evaluation Tasks.pdf                # Task instructions given to participants
+│   └── Hi-Audio_Participant_Comments_Anonymized.md  # Per-participant task performance and comments
+├── data/                                              # Raw and processed data for replication
+│   ├── Hi-Audio_User_Evaluation_Survey.csv           # Anonymized full survey responses
+│   ├── Section_4_SUS.xlsx                            # Raw SUS item scores (22 participants × 10 items)
+│   └── Section_5_NASA-TLX.xlsx                       # Raw NASA-TLX scores (22 participants × 6 dimensions)
+├── images/                                            # Figures and logos used in this README
+│   ├── instruments_barchart.png                       # Reported instruments bar chart
+│   ├── fig_task_time_pie.png                          # Task completion time distribution
+│   ├── ERC_logo.png                                   # European Research Council logo
+│   └── lascene.png                                    # La Scène logo
+└── surveys/                                           # Individual participant questionnaire responses
+    └── <response_id>.pdf                              # One PDF per participant (22 files total)
 ```
 
 The PDF files in the `surveys/` folder are named after the unique response identifiers assigned by the JotForm survey platform. Each file contains a single participant's answers to the post-task questionnaire, including their SUS and NASA-TLX responses and task completion self-report.
+
+The `data/` folder contains machine-readable files intended for result verification and replication. SUS scores were computed using the standard formula and SD reported as population SD (dividing by n=22). NASA-TLX raw scores are the unweighted mean of 6 dimensions, with the Performance dimension inverted (100 − value) before averaging; SD reported as sample SD of the 6 dimension means.
 
 ---
 
