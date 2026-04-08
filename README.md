@@ -60,8 +60,10 @@ hiaudio_user_evaluation_results/
 │   └── Hi-Audio_Participant_Comments_Anonymized.md  # Per-participant task performance and comments
 ├── data/                                              # Raw and processed data for replication
 │   ├── Hi-Audio_User_Evaluation_Survey.csv           # Anonymized full survey responses
-│   ├── Section_4_SUS.xlsx                            # Raw SUS item scores (22 participants × 10 items)
-│   └── Section_5_NASA-TLX.xlsx                       # Raw NASA-TLX scores (22 participants × 6 dimensions)
+│   ├── Section_4_SUS.csv                             # SUS raw item scores (22 participants × 10 items, plain text)
+│   ├── Section_4_SUS.xlsx                            # SUS raw items + scoring formula + summary statistics
+│   ├── Section_5_NASA-TLX.csv                        # NASA-TLX raw dimension scores (22 participants × 6 dims, plain text)
+│   └── Section_5_NASA-TLX.xlsx                       # NASA-TLX raw scores + Raw Score formula + summary statistics
 ├── images/                                            # Figures and logos used in this README
 │   ├── instruments_barchart.png                       # Reported instruments bar chart
 │   ├── fig_task_time_pie.png                          # Task completion time distribution
@@ -73,7 +75,7 @@ hiaudio_user_evaluation_results/
 
 The PDF files in the `surveys/` folder are named after the unique response identifiers assigned by the JotForm survey platform. Each file contains a single participant's answers to the post-task questionnaire, including their SUS and NASA-TLX responses and task completion self-report.
 
-The `data/` folder contains machine-readable files intended for result verification and replication. SUS scores were computed using the standard formula and SD reported as population SD (dividing by n=22). NASA-TLX raw scores are the unweighted mean of 6 dimensions, with the Performance dimension inverted (100 − value) before averaging; SD reported as sample SD of the 6 dimension means.
+The `data/` folder contains machine-readable files intended for result verification and replication. Each scale is provided in two formats: a plain-text CSV (primary, tool-agnostic) and an Excel workbook (xlsx) that embeds the scoring formulas and summary statistics for transparency. The CSV files use `P01`–`P22` participant labels consistent with the supplementary materials. SUS scores were computed using the standard formula (odd items: score − 1; even items: 5 − score; sum × 2.5) and SD reported as population SD (dividing by n=22). NASA-TLX raw scores are the unweighted mean of 6 dimensions, with the Performance dimension inverted (100 − value) before averaging; SD reported as sample SD of the 6 dimension means.
 
 ---
 
