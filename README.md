@@ -25,7 +25,9 @@
   * [Limitations](#limitations)
 * [References](#references)
 * [Acknowledgments](#acknowledgments)
+* [Reproducibility](#reproducibility)
 * [How to Cite](#how-to-cite)
+* [License](#license)
 * [Supplementary Materials](SUPPLEMENTARY.md)
 
 ---
@@ -55,6 +57,9 @@ The evaluation was conducted in collaboration with **La Scène**, the student mu
 hiaudio_user_evaluation_results/
 ├── README.md                                          # This file — study summary and results
 ├── SUPPLEMENTARY.md                                   # Participant-level data tables and qualitative feedback
+├── DATA_DICTIONARY.md                                 # Column-level documentation for all data files
+├── LICENSE                                            # Creative Commons Attribution 4.0 (CC BY 4.0)
+├── validate.py                                        # Script to verify headline statistics from CSV files
 ├── docs/
 │   ├── Hi-Audio_Evaluation Tasks.pdf                # Task instructions given to participants
 │   └── Hi-Audio_Participant_Comments_Anonymized.md  # Per-participant task performance and comments
@@ -63,7 +68,8 @@ hiaudio_user_evaluation_results/
 │   ├── Section_4_SUS.csv                             # SUS raw item scores (22 participants × 10 items, plain text)
 │   ├── Section_4_SUS.xlsx                            # SUS raw items + scoring formula + summary statistics
 │   ├── Section_5_NASA-TLX.csv                        # NASA-TLX raw dimension scores (22 participants × 6 dims, plain text)
-│   └── Section_5_NASA-TLX.xlsx                       # NASA-TLX raw scores + Raw Score formula + summary statistics
+│   ├── Section_5_NASA-TLX.xlsx                       # NASA-TLX raw scores + Raw Score formula + summary statistics
+│   └── Task_Performance.csv                          # Binary task completion outcomes (22 participants × 10 tasks)
 ├── images/                                            # Figures and logos used in this README
 │   ├── instruments_barchart.png                       # Reported instruments bar chart
 │   ├── fig_task_time_pie.png                          # Task completion time distribution
@@ -75,7 +81,26 @@ hiaudio_user_evaluation_results/
 
 The PDF files in the `surveys/` folder are named after the unique response identifiers assigned by the JotForm survey platform. Each file contains a single participant's answers to the post-task questionnaire, including their SUS and NASA-TLX responses and task completion self-report.
 
-The `data/` folder contains machine-readable files intended for result verification and replication. Each scale is provided in two formats: a plain-text CSV (primary, tool-agnostic) and an Excel workbook (xlsx) that embeds the scoring formulas and summary statistics for transparency. The CSV files use `P01`–`P22` participant labels consistent with the supplementary materials. SUS scores were computed using the standard formula (odd items: score − 1; even items: 5 − score; sum × 2.5) and SD reported as population SD (dividing by n=22). NASA-TLX raw scores are the unweighted mean of 6 dimensions, with the Performance dimension inverted (100 − value) before averaging; SD reported as sample SD of the 6 dimension means.
+The `data/` folder contains machine-readable files intended for result verification and replication. Each scale is provided in two formats: a plain-text CSV (primary, tool-agnostic) and an Excel workbook (xlsx) that documents the scoring formulas and includes precomputed summary statistics for transparency. Task completion outcomes are provided separately in `Task_Performance.csv` (Y/N per participant per task). The CSV files use `P01`–`P22` participant labels consistent with the supplementary materials. SUS scores were computed using the standard formula (odd items: score − 1; even items: 5 − score; sum × 2.5) and SD reported as population SD (dividing by n=22). NASA-TLX raw scores are the unweighted mean of 6 dimensions, with the Performance dimension inverted (100 − value) before averaging; SD reported as sample SD of the 6 dimension means. Column-level documentation for all data files is in [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md).
+
+---
+
+## Reproducibility
+
+The table below lists the authoritative source file for each headline result. All statistics can be independently recomputed from the CSV files alone.
+
+| Result | Authoritative file |
+| ------ | ------------------ |
+| SUS scores (per participant + summary) | `data/Section_4_SUS.csv` |
+| NASA-TLX scores (per participant + summary) | `data/Section_5_NASA-TLX.csv` |
+| Task completion rate | `data/Task_Performance.csv` |
+| Participant-to-submission-ID mapping | `SUPPLEMENTARY.md` — Participant Mapping table |
+
+To verify the headline statistics reported in this README, run from the repository root:
+
+```bash
+python validate.py
+```
 
 ---
 
@@ -239,11 +264,11 @@ The SUS results indicate **marginal overall usability**, with substantial variab
 
 Workload scores indicate a **moderate perceived workload**, primarily driven by mental demand and effort rather than physical demand.
 
-| Metric         | Mean | SD   | Min | Max  |
-| -------------- | ---- | ---- | --- | ---- |
-| NASA-TLX (raw) | 37.3 | 13.5 | 1.7 | 61.0 |
+| Metric         | Mean | SD of Dimension Means | Min | Max  |
+| -------------- | ---- | --------------------- | --- | ---- |
+| NASA-TLX (raw) | 37.3 | 13.5                  | 1.7 | 61.0 |
 
-On a 0–100 scale, a raw score of 37.3 falls in the **low-to-moderate** range, suggesting that while the platform requires meaningful cognitive engagement, it does not impose high perceived burden on most users. As shown in the subscale breakdown below, Mental Demand and Frustration had the highest mean scores, whereas Physical Demand was low — consistent with the interaction-based nature of the tasks.
+On a 0–100 scale, a raw score of 37.3 falls in the **low-to-moderate** range, suggesting that while the platform requires meaningful cognitive engagement, it does not impose high perceived burden on most users. In the table above, the value `13.5` corresponds to the **sample SD of the 6 dimension means** (with Performance inverted), matching the reporting convention used in the supplementary materials and spreadsheet workbook. As shown in the subscale breakdown below, Mental Demand and Frustration had the highest mean scores, whereas Physical Demand was low — consistent with the interaction-based nature of the tasks.
 
 | Dimension       | Mean  | SD    |
 | --------------- | ----- | ----- |
@@ -317,7 +342,7 @@ We also thank **La Scène**, the student music association of Télécom Paris, f
 
 ## How to Cite
 
-If you use or reference the data or findings from this repository, please cite the published journal article:
+If you use or reference the data or findings from this repository, please cite the published journal article. You may also cite the repository directly.
 
 > Gil Panal, J. M., David, A., & Richard, G. (2026). The Hi-Audio online platform for recording and distributing multi-track music datasets. *Journal on Audio, Speech, and Music Processing*. https://doi.org/10.1186/s13636-026-00459-0
 
@@ -336,3 +361,25 @@ If you use or reference the data or findings from this repository, please cite t
 ```
 
 A preprint version is also available at: [https://hal.science/hal-05153739](https://hal.science/hal-05153739)
+
+**Repository citation:**
+
+> Gil Panal, J. M., David, A., & Richard, G. (2026). *Hi-Audio user evaluation results* [Data repository]. GitHub. https://github.com/idsinge/hiaudio_user_evaluation_results
+
+```bibtex
+@misc{GilPanal2026data,
+  author = {Gil Panal, Jos{\'e} M. and David, Aur{\'e}lien and Richard, Ga{\"e}l},
+  title  = {Hi-Audio User Evaluation Results},
+  year   = {2026},
+  url    = {https://github.com/idsinge/hiaudio_user_evaluation_results}
+}
+```
+
+---
+
+## License
+
+The contents of this repository are released under the
+[Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license.
+You are free to share and adapt the material for any purpose, provided appropriate credit is given.
+See the [`LICENSE`](LICENSE) file for full terms.
