@@ -46,6 +46,8 @@ Additional contextual information about the evaluation call and recruitment proc
 
 Individual **post-task questionnaire** responses (including usability and workload assessments) are available in the [`surveys/`](surveys/) folder of this repository.
 
+For a related practice-based evaluation of Hi-Audio, see: [hiaudio_FLO_practice-based_evaluation](https://github.com/idsinge/hiaudio_FLO_practice-based_evaluation)
+
 ---
 
 ## Repository Structure
